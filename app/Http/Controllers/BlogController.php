@@ -13,14 +13,14 @@ class BlogController extends Controller
         return view('blog.index') -> with(['post' => $post]);
     }
 
-    // public function store(Request $request){
-    //     Post::create([
-    //         'id'=>$request->id,
-    //         'title'=>$request->title,
-    //         'body'=>$request->body
-    //     ]);
-    //     return back();
-    //     // dd($request);
-    // }
-    //
+    public function store(Request $request){
+        Post::create([
+            'id'=>$request->id,
+            'title'=>$request->title,
+            'body'=>$request->body
+        ]);
+        return back();
+        // dd($request);
+    }
+    
 }

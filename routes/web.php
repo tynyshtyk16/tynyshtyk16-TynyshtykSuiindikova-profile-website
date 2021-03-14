@@ -40,13 +40,13 @@ Route::get('/skills', function(){
 	return view('skills');
 });
 
-Route::get('post/create', function() {
-    DB::table('post')->insert([
-        'id' => 12,
-        'title' => 'Lab work',
-        'body' => ' just posts.'
-    ]); 
-});
+// Route::get('post/create', function() {
+//     DB::table('post')->insert([
+//         'id' => 12,
+//         'title' => 'Lab work',
+//         'body' => ' just posts.'
+//     ]); 
+// });
 
 Route::get('post', function() {
 	$posts = Post::find(1);
@@ -55,7 +55,8 @@ Route::get('post', function() {
 
 Route::get('post',[BlogController::class, 'index']);
 
-// Route::get('post/create',function(){
-//     return view('blog.create');
-// });
-// Route::post('post/create', [BlogController::class, 'store'])->name('add-blog');
+
+Route::get('post/create',function(){
+    return view('blog.create');
+});
+Route::post('post/create', [BlogController::class, 'store'])->name('add-blog');
