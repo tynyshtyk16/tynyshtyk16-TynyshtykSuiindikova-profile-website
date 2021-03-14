@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+use App\Models\Post;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +39,23 @@ Route::get('/contact', function(){
 Route::get('/skills', function(){
 	return view('skills');
 });
+
+Route::get('post/create', function() {
+    DB::table('post')->insert([
+        'id' => 12,
+        'title' => 'Lab work',
+        'body' => ' just posts.'
+    ]); 
+});
+
+Route::get('post', function() {
+	$posts = Post::find(1);
+	return $posts;
+});
+
+Route::get('post',[BlogController::class, 'index']);
+
+// Route::get('post/create',function(){
+//     return view('blog.create');
+// });
+// Route::post('post/create', [BlogController::class, 'store'])->name('add-blog');
